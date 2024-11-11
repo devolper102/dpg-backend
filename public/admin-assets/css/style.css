@@ -1,0 +1,29 @@
+.duration-select li button {
+    border: 1px solid #e5e5e5 !important;
+    border-radius: 5px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    color: #000;
+    background-color: #f2f2f2;
+}
+.duration-select .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+    background-color: #EAFAFF;
+    color: #000 !important;
+    border: 1px solid #EAFAFF !important;
+}
+.duration-select li button:hover {
+    background-color: #EAFAFF;
+    color: #000 !important;
+    border: 1px solid #EAFAFF !important;
+}
+.removePrice, .updatePrice, .updateSpecification {
+    padding: 11px !important;
+}
+.update-btn{
+    margin-top: 35px;
+}
+.duration-select .nav-item .disabled{
+    color: #aaa;
+    background-color: #f2f2f2;
+}
