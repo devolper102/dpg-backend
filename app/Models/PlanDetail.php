@@ -15,6 +15,7 @@ class PlanDetail extends Model
         'plan_id',
         'subscription_id',
         'status',
+        'description',
     ];
     public function website(){
         return $this->belongsTo(Website::class, 'website_id');

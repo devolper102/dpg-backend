@@ -18,6 +18,7 @@ class PlanDetailPrice extends Model
         'unit',
         'duration',
         'status',
+        'description',
     ];
     public function planDetail(){
         return $this->belongsTo(PlanDetail::class, 'plan_detail_id');

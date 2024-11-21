@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('sale_price')->nullable();
             $table->string('unit')->nullable();
             $table->string('duration')->nullable();
+            $table->text('description')->nullable();
             $table->tinyInteger('status')->default('1');
             $table->timestamps();
         });

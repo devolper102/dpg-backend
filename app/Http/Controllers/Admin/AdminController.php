@@ -151,7 +151,7 @@ class AdminController extends Controller
 
         $request->validate([
             'name' =>'required|string',
-            'image' =>'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' =>'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'description' =>'nullable|string',
         ]);
         $website = Website::where('active','1')->first();
@@ -184,7 +184,7 @@ class AdminController extends Controller
         // Validate the request
         $request->validate([
             'name' =>'required|string',
-            'image' =>'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' =>'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:3048',
             'description' =>'nullable|string',
         ]);
         $website = Website::where('active','1')->first();
@@ -369,8 +369,8 @@ class AdminController extends Controller
             'unit.0' => 'nullable',
             'duration.*' => 'required|string',
             'duration.0' => 'nullable',
-            'image.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Validation for images
-            'image_price.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Validation for image prices
+            'image.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Validation for images
+            'image_price.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Validation for image prices
         ]);
         $website = Website::where('active','1')->first();
         $checkPlainDetail = PlanDetail::where('website_id', $website->id)
@@ -385,6 +385,7 @@ class AdminController extends Controller
         $planDetail->website_id = $website->id;
         $planDetail->category_id = $request->category_id;
         $planDetail->plan_id = $request->plan_id;
+        $planDetail->description = $request->plan_description;
         $planDetail->subscription_id = $request->subscription_id;
         $planDetail->save();
          if ($planDetail) {
@@ -426,6 +427,7 @@ class AdminController extends Controller
             $planDetailPrice->name = $name_price;
             $planDetailPrice->price = $request->price[$index];
             $planDetailPrice->unit = $request->unit[$index];
+            $planDetailPrice->description = $request->price_description[$index];
             $planDetailPrice->duration = $request->duration[$index];
             $planDetailPrice->status = '1';
 
@@ -468,6 +470,7 @@ class AdminController extends Controller
         $plainDetail->category_id = $request->category_id;
         $plainDetail->plan_id = $request->plan_id;
         $plainDetail->subscription_id = $request->subscription_id;
+        $planDetail->description = $request->plan_description;
         $plainDetail->status = $request->status;
         $plainDetail->save(); // Use save() to persist changes
         return redirect()->back()->with('status', 'Plan Detail updated successfully');
@@ -585,6 +588,7 @@ class AdminController extends Controller
         // Update the fields
         $planDetailPrice->name = $request->name_price;
         $planDetailPrice->price = $request->price;
+        $planDetailPrice->description = $request->price_description;
         $planDetailPrice->unit = $request->unit;
         $planDetailPrice->status = '1';
 
@@ -757,7 +761,7 @@ class AdminController extends Controller
             'email' =>'required|unique:staff,email',
             'phone' =>'required|unique:staff,phone',
             'skill' =>'required',
-            'image' =>'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' =>'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'address' =>'required|string',
             'available_from' => 'required|date_format:H:i',
             'available_to' => 'required|date_format:H:i|after:available_from',
@@ -809,7 +813,7 @@ class AdminController extends Controller
             'first_name' =>'required|string',
             'last_name' =>'required|string',
             'skill' =>'required',
-            'image' =>'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' =>'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'address' =>'required|string',
             'available_from' => 'required|date_format:H:i:s',
             'available_to' => 'required|date_format:H:i:s|after:available_from',

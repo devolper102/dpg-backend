@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('plan_id');
             $table->unsignedBigInteger('subscription_id');
+            $table->text('description')->nullable();
             $table->tinyInteger('status')->default('1');
             $table->foreign('website_id')->references('id')->on('websites')->onDelete('cascade');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');

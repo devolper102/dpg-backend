@@ -90,7 +90,14 @@
                                                 @endif
                                             </select>
                                         </div>
+                                        <div class="col-md-4 fv-row">
+                                            <label class="fs-5 fw-semibold mb-2 mt-2">Plan Description</label>
+                                            <textarea  class="form-control form-control-solid" placeholder="Description"
+                                                name="plan_description" rows="3">
+                                                </textarea>
+                                        </div>
                                     </div>
+
                                     <hr>
                                     <h1 class="fw-bold text-gray-900 mb-9">Plan Detail Data</h1>
                                     <div class="row">
@@ -131,7 +138,7 @@
                                             <input type="file" class="form-control form-control-solid" placeholder=""
                                                 name="image_price[]" id="image_price" />
                                         </div>
-                                        <div class="col-md-2 fv-row">
+                                        <div class="col-md-1 fv-row">
                                             <label class="fs-5 fw-semibold mb-2 mt-2">Price <span
                                                     class="text-danger">*</span></label>
                                             <input type="text" class="form-control form-control-solid" placeholder=""
@@ -149,9 +156,17 @@
                                             <input type="text" class="form-control form-control-solid" placeholder=""
                                                 name="duration[]" id="duration" />
                                         </div>
-                                        <div class="mt-1 col-2 d-flex align-items-end">
-                                            <button type="button" id="addPrice" class="btn btn-primary"><i
-                                                    class="fa-solid fa-plus p-0"></i></button>
+                                        <div class="col-md-2 fv-row">
+                                            <label class="fs-5 fw-semibold mb-2 mt-2">Description <span
+                                                    class="text-danger">*</span></label>
+                                            <textarea  class="form-control form-control-solid" placeholder="Description"
+                                                name="price_description[]" id="price_description" rows="1">
+                                                </textarea>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <button type="button" id="addPrice" class="btn btn-primary" style="margin-top: 33px;">
+                                                <i class="fa-solid fa-plus p-0"></i>
+                                            </button>
                                         </div>
                                     </div>
                                     <div id="priceContainer"></div>
@@ -221,6 +236,7 @@
                 const price = $('#price').val();
                 const unit = $('#unit').val();
                 const duration = $('#duration').val();
+                const price_description = $('#price_description').val();
 
                 if (namePrice && imagePriceInput.files.length > 0 && price && unit && duration) {
                     // Clone the original file input (without resetting)
@@ -242,6 +258,12 @@
                     </div>
                     <div class="col-md-2 fv-row">
                         <input type="text" class="form-control form-control-solid" value="${duration}" name="duration[]" />
+                    </div>
+                     <div class="col-md-2 fv-row">
+                        
+                        <textarea  class="form-control form-control-solid"
+                                                name="price_description[]" rows="1">${price_description}
+                                                </textarea>
                     </div>
                     <div class="col-1">
                         <button type="button" class="btn btn-danger removePrices"><i class="fa-solid fa-minus"></i></button>
