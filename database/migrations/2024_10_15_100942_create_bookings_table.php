@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('user_id')->nullable();
             $table->string('website_id')->nullable();
-            $table->string('plan_id')->nullable();
+            $table->string('plan_detail_prices_ids')->nullable();
+            $table->string('item_counts')->nullable();
             $table->string('subscription_id')->nullable();
             $table->string('category_id')->nullable();
             $table->string('service_id')->nullable();

@@ -12,7 +12,8 @@ class Booking extends Model
     protected $fillable = [
         'user_id',
         'website_id',
-        'plan_id',
+        'item_counts',
+        'plan_detail_prices_ids',
         'subscription_id',
         'category_id',
         'customer_name',
