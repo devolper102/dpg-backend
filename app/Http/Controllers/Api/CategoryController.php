@@ -33,6 +33,18 @@ class CategoryController extends Controller
                     "statusCode" => 200
                 ],200);
     }
+    public function getCategoriesHome(Request $request)
+    {
+            $websiteName = $request->input('website_name');
+            $websiteId = Website::where('name', $websiteName)->pluck('id')->first();
+            // dd($website);
+            $categories = Category::where('website_id', $websiteId)->get();
+                return response()->json([
+                    "categories" => $categories,
+                    "status" => "success",
+                    "statusCode" => 200
+                ],200);
+    }
     public function getServices(Request $request)
     {
             $id = $request->input('id');
@@ -117,5 +129,16 @@ class CategoryController extends Controller
         'booking' => $booking
     ]);
 }
-
+    public function getPlansForServices(Request $request)
+    {
+            $category = $request->input('category');
+            $categoryId = Category::where('name', $category)->pluck('id')->first();
+            // dd($id);
+            $plans = PlanDetail::where('category_id', $categoryId)->with('planDetailPrices', 'plan')->get();
+                return response()->json([
+                    "plans" => $plans,
+                    "status" => "success",
+                    "statusCode" => 200
+                ],200);
+    }
 }

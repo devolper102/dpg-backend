@@ -32,7 +32,9 @@ Route::middleware('auth:sanctum')->group( function () {
 
 Route::controller(CategoryController::class)->group(function(){
     Route::post('/get-categories', 'getCategories');
+    Route::post('/get-categories-home', 'getCategoriesHome');
     Route::post('/get-services', 'getServices');
     Route::post('/save-appointment', 'saveAppointment');
+    Route::post('/get-plans-for-services', 'getPlansForServices');
     
 });
